@@ -19,8 +19,8 @@ export const Vans = () => {
             <h1>Explore Our Van Options</h1>
             <ul style={{display:'flex', flexDirection: 'row', flexWrap: 'wrap', paddingLeft: 0}}>
                 {data.map((van: any) => (
-                    <Link to={`/vans/${van.id}`} style={{textDecoration: 'none', color: 'black' , marginBottom: '1.5%', marginRight: '1%'}}>
-                        <li key={van.id} style={{listStyleType: 'none'}}>
+                    <Link key={van.id} to={`/vans/${van.id}`} style={{textDecoration: 'none', color: 'black' , marginBottom: '1.5%', marginRight: '1%'}}>
+                        <li style={{listStyleType: 'none'}}>
                             <div>
                                 <img alt={van.name} src={van.imageUrl} style={{width: 300, height: 300}}/>
                             </div>
