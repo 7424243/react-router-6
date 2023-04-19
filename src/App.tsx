@@ -3,6 +3,7 @@ import './App.css';
 import { Home } from './Home';
 import { About } from './About';
 import { Navbar } from './Navbar';
+import { Vans } from './Vans';
 
 export const App = () => {
   return (
@@ -11,6 +12,7 @@ export const App = () => {
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='about' element={<About />} />
+        <Route path='vans' element={<Vans />} />
       </Routes>
     </div>
   );
