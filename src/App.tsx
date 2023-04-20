@@ -12,7 +12,6 @@ import { HostLayout } from './components/HostLayout';
 
 export const App = () => {
   return (
-    <div style={{ padding: '2%' }}>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />}/>
@@ -26,6 +25,5 @@ export const App = () => {
           <Route path='vans/:id' element={<VanDetail />} />
         </Route>
       </Routes>
-    </div>
   );
 }
