@@ -8,6 +8,7 @@ export const Navbar = () => {
                     <Link to='/' style={{ textDecoration: 'none' }}>#VANLIFE</Link>
                 </div>
                 <div>
+                    <Link to='/host' style={{ textDecoration: 'none', marginLeft: '20px' }}>Host</Link>
                     <Link to='/about' style={{ textDecoration: 'none', marginLeft: '20px' }}>About</Link>
                     <Link to='/vans' style={{ textDecoration: 'none', marginLeft: '20px' }}>Van</Link>
                 </div>
