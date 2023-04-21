@@ -1,12 +1,35 @@
-import { Link, Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
+import { navBarStyles } from './styles'
 
 export const HostLayout = () => {
     return (
         <>
             <nav style={{display: 'flex'}}>
-                <Link to='/host' style={{ textDecoration: 'none' }}>Dashboard</Link>
-                <Link to='/host/income' style={{ textDecoration: 'none', marginLeft: '20px' }}>Income</Link>
-                <Link to='/host/reviews' style={{ textDecoration: 'none', marginLeft: '20px' }}>Reviews</Link>
+                <NavLink 
+                    to='/host'   
+                    end //acitve link and nested routing                      
+                    style={({isActive}) => (
+                        navBarStyles(isActive)
+                    )}
+                >
+                    Dashboard
+                </NavLink>
+                <NavLink 
+                    to='/host/income'                         
+                    style={({isActive}) => (
+                            navBarStyles(isActive)
+                    )}
+                >
+                    Income
+                </NavLink>
+                <NavLink 
+                    to='/host/reviews'                         
+                    style={({isActive}) => (
+                        navBarStyles(isActive)
+                    )}
+                >
+                    Reviews
+                </NavLink>
             </nav>
             <Outlet />
         </>
