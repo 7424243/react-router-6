@@ -18,16 +18,34 @@ export const Vans = () => {
         fetchData();
     }, [])
 
+    const handleFilterChange = (key: any, value: any) => {
+        setSearchParams(prevParams => {
+            if (value===null) {
+                prevParams.delete(key)
+            } else {
+                prevParams.set(key, value)
+            }
+            return prevParams
+        })
+    }
+
     const filteredVans = typeFilter ? data.filter((van: any) => van.type === typeFilter) : data;
+
+    const filterButtonStyle = {
+        textDecoration: 'none', 
+        color: 'black', 
+        marginRight: '1%', 
+        padding: 5,
+    }
 
     return (
         <>
             <h1>Explore Our Van Options</h1>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-                <button onClick={() => setSearchParams({type: 'luxury'})} style={{textDecoration: 'none', color: 'black', marginRight: '1%', padding: 5}}>Luxury</button>
-                <button onClick={() => setSearchParams({type: 'rugged'})} style={{textDecoration: 'none', color: 'black', marginRight: '1%', padding: 5}}>Rugged</button>
-                <button onClick={() => setSearchParams({type: 'simple'})} style={{textDecoration: 'none', color: 'black', marginRight: '1%', padding: 5}}>Simple</button>
-                <button onClick={() => setSearchParams({})} style={{textDecoration: 'none', color: 'black', marginRight: '1%', padding: 5}}>Clear Filters</button>
+                <button onClick={() => handleFilterChange('type', 'luxury')} style={{...filterButtonStyle}}>Luxury</button>
+                <button onClick={() => handleFilterChange('type', 'rugged')} style={{...filterButtonStyle}}>Rugged</button>
+                <button onClick={() => handleFilterChange('type', 'simple')} style={{...filterButtonStyle}}>Simple</button>
+                {typeFilter && <button onClick={() => handleFilterChange('type', null)} style={{...filterButtonStyle}}>Clear Filters</button>}
             </div>
             <ul style={{display:'flex', flexDirection: 'row', flexWrap: 'wrap', paddingLeft: 0}}>
                 {filteredVans.map((van: any) => (
