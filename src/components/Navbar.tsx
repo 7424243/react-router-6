@@ -31,7 +31,7 @@ export const Navbar = () => {
                             navBarStyles(isActive)
                          )}
                     >
-                        Van
+                        Vans
                     </NavLink>
                 </div>
             </nav>
