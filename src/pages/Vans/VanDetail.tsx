@@ -8,7 +8,6 @@ export const VanDetail = () => {
     const fetchVanData = async () => {
         const res = await fetch(`/api/vans/${params.id}`)
         const jsonData = await res.json();
-        console.log('jsonData: ', jsonData.vans)
         setVanDetails(jsonData.vans)
     }
 
