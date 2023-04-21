@@ -6,7 +6,7 @@ export const HostLayout = () => {
         <>
             <nav style={{display: 'flex'}}>
                 <NavLink 
-                    to='/host'   
+                    to='.'   
                     end //acitve link and nested routing                      
                     style={({isActive}) => (
                         navBarStyles(isActive)
@@ -15,7 +15,7 @@ export const HostLayout = () => {
                     Dashboard
                 </NavLink>
                 <NavLink 
-                    to='/host/income'                         
+                    to='income'                         
                     style={({isActive}) => (
                             navBarStyles(isActive)
                     )}
@@ -23,7 +23,7 @@ export const HostLayout = () => {
                     Income
                 </NavLink>
                 <NavLink 
-                    to='/host/vans'                         
+                    to='vans'                         
                     style={({isActive}) => (
                         navBarStyles(isActive)
                     )}
@@ -31,7 +31,7 @@ export const HostLayout = () => {
                     Vans
                 </NavLink>
                 <NavLink 
-                    to='/host/reviews'                         
+                    to='reviews'                         
                     style={({isActive}) => (
                         navBarStyles(isActive)
                     )}
