@@ -23,6 +23,14 @@ export const HostLayout = () => {
                     Income
                 </NavLink>
                 <NavLink 
+                    to='/host/vans'                         
+                    style={({isActive}) => (
+                        navBarStyles(isActive)
+                    )}
+                >
+                    Vans
+                </NavLink>
+                <NavLink 
                     to='/host/reviews'                         
                     style={({isActive}) => (
                         navBarStyles(isActive)
