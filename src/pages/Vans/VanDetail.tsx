@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
+import { BackLink } from '../../components/BackLink';
 
 export const VanDetail = () => {
     const [vanDetails, setVanDetails] = useState<any>(null)
     const params = useParams();
+    const {state: linkState} = useLocation();
 
     const fetchVanData = async () => {
         const res = await fetch(`/api/vans/${params.id}`)
@@ -20,6 +22,7 @@ export const VanDetail = () => {
         <>
             {vanDetails ? (
                 <>
+                    <BackLink to={`..?${linkState.search}`} />
                     <img src={vanDetails.imageUrl} alt={vanDetails.name} style={{width: 500, height: 500}}/>
                     <h1>{vanDetails.name}</h1>
                 </>

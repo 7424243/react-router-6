@@ -20,7 +20,7 @@ export const HostVans = () => {
          {!hostVansData && <h2>Loading...</h2>}
          {hostVansData && hostVansData.map((hostVan: any) => {
             return (
-                <Link to={`/host/vans/${hostVan.id}`} key={hostVan.id} style={{display: 'flex', flexDirection: 'row', backgroundColor: 'lightgray', width: 500, marginBottom: 20, textDecoration: 'none', color: 'black'}}>
+                <Link to={hostVan.id} key={hostVan.id} style={{display: 'flex', flexDirection: 'row', backgroundColor: 'lightgray', width: 500, marginBottom: 20, textDecoration: 'none', color: 'black'}}>
                     <div>
                         <img src={hostVan.imageUrl} alt={hostVan.name} style={{width: 200, height: 200}}/>
                     </div>

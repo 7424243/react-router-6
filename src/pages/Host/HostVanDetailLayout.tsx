@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
+import { NavLink, Outlet, useParams } from 'react-router-dom'
 import { navBarStyles } from '../../components/styles';
+import { BackLink } from '../../components/BackLink';
 
 export const HostVanDetailLayout = () => {
     const [hostVanData, setHostVanData] = useState<any>(null);
@@ -20,9 +21,7 @@ export const HostVanDetailLayout = () => {
 
     return (
         <div style={{padding: '1%'}}>
-            <Link to='/host/vans' relative='path' style={{backgroundColor: 'white', fontSize: 30, marginTop: 20, textDecoration: 'none'}}>
-                🔙
-            </Link>
+            <BackLink to={'/host/vans'}/>
             {hostVanData ? (
                 <div style={{backgroundColor: 'lightgrey', padding: '1%', marginTop: 20,}}>
                     <div style={{display: 'flex', flexDirection: 'row', marginBottom: '2%'}}>

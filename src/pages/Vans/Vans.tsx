@@ -49,7 +49,7 @@ export const Vans = () => {
             </div>
             <ul style={{display:'flex', flexDirection: 'row', flexWrap: 'wrap', paddingLeft: 0}}>
                 {filteredVans.map((van: any) => (
-                    <Link key={van.id} to={`/vans/${van.id}`} style={{textDecoration: 'none', color: 'black' , marginBottom: '1.5%', marginRight: '1%'}}>
+                    <Link key={van.id} to={van.id} state={{search: searchParams.toString()}} style={{textDecoration: 'none', color: 'black' , marginBottom: '1.5%', marginRight: '1%'}}>
                         <li style={{listStyleType: 'none'}}>
                             <div>
                                 <img alt={van.name} src={van.imageUrl} style={{width: 300, height: 300}}/>
