@@ -14,6 +14,7 @@ import { HostVanDetail } from './pages/Host/HostVanDetail';
 import { HostVanDetailLayout } from './pages/Host/HostVanDetailLayout';
 import { HostVanPricing } from './pages/Host/HostVanPricing';
 import { HostVanPhotos } from './pages/Host/HostVanPhotos';
+import { NotFound } from './pages/NotFound';
 
 export const App = () => {
   return (
@@ -34,6 +35,7 @@ export const App = () => {
           <Route path='about' element={<About />} />
           <Route path='vans' element={<Vans />} />
           <Route path='vans/:id' element={<VanDetail />} />
+          <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
   );

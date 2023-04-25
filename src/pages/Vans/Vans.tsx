@@ -5,13 +5,31 @@ export const Vans = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [data, setData] = useState<any>([])
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<any>(null);
 
     const typeFilter = searchParams.get('type')
 
     const fetchData = async () => {
-        const res = await fetch('/api/vans');
-        const jsonData = await res.json();
-        setData(jsonData.vans)
+        setLoading(true);
+
+        try {
+            const res = await fetch('/api/vans');
+            if (!res.ok) {
+                // eslint-disable-next-line no-throw-literal
+                throw {
+                    message: "Failed to fetch vans", 
+                    statusText: res.statusText,
+                    status: res.status
+                }
+            }
+            const jsonData = await res.json();
+            setData(jsonData.vans)
+        } catch (err) {
+            setError(err);
+        }
+
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -40,7 +58,10 @@ export const Vans = () => {
 
     return (
         <>
-            <h1>Explore Our Van Options</h1>
+            {error && <h1>There was an error: `${error}`</h1>}
+            {loading ? <h1>Loading...</h1> : (
+                <>
+                    <h1>Explore Our Van Options</h1>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <button onClick={() => handleFilterChange('type', 'luxury')} style={{...filterButtonStyle}}>Luxury</button>
                 <button onClick={() => handleFilterChange('type', 'rugged')} style={{...filterButtonStyle}}>Rugged</button>
@@ -63,6 +84,8 @@ export const Vans = () => {
                     </Link>
                 ))}
             </ul>
+                </>
+            )}
         </>
     )
 }
