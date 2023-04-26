@@ -9,8 +9,6 @@ export const Vans = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const loaderData: any = useLoaderData();
 
-    // const [error, setError] = useState<any>(null);
-
     const typeFilter = searchParams.get('type')
 
     const handleFilterChange = (key: any, value: any) => {
@@ -35,7 +33,6 @@ export const Vans = () => {
 
     return (
         <>
-            {/* {error && <h1>There was an error: `${error}`</h1>} */}
             <h1>Explore Our Van Options</h1>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <button onClick={() => handleFilterChange('type', 'luxury')} style={{...filterButtonStyle}}>Luxury</button>

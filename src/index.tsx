@@ -18,13 +18,14 @@ import { Reviews } from './pages/Host/Reviews';
 import { NotFound } from './pages/NotFound';
 import { VanDetail } from './pages/Vans/VanDetail';
 import { Vans, loader as vansLoader } from './pages/Vans/Vans';
+import { Error } from './components/Error';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 const router = createBrowserRouter(createRoutesFromElements(
-    <Route path='/' element={<Layout />}>
+    <Route path='/' element={<Layout />} errorElement={<Error />}>
       <Route index element={<Home />}/>
       <Route path='host' element={<HostLayout />}>
         <Route index element={<Dashboard />} />
@@ -38,7 +39,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path='reviews' element={<Reviews />} />
       </Route>
       <Route path='about' element={<About />} />
-      <Route path='vans' element={<Vans />} loader={vansLoader}/>
+      <Route path='vans' element={<Vans />} loader={vansLoader} />
       <Route path='vans/:id' element={<VanDetail />} />
       <Route path='*' element={<NotFound />} />
     </Route>
