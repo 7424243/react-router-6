@@ -17,7 +17,7 @@ import { Income } from './pages/Host/Income';
 import { Reviews } from './pages/Host/Reviews';
 import { NotFound } from './pages/NotFound';
 import { VanDetail } from './pages/Vans/VanDetail';
-import { Vans } from './pages/Vans/Vans';
+import { Vans, loader as vansLoader } from './pages/Vans/Vans';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -38,7 +38,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path='reviews' element={<Reviews />} />
       </Route>
       <Route path='about' element={<About />} />
-      <Route path='vans' element={<Vans />} />
+      <Route path='vans' element={<Vans />} loader={vansLoader}/>
       <Route path='vans/:id' element={<VanDetail />} />
       <Route path='*' element={<NotFound />} />
     </Route>

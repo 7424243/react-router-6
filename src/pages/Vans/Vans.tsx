@@ -1,40 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLoaderData, useSearchParams } from 'react-router-dom';
+import { fetchVans } from '../../api';
+
+export const loader = () => {
+    return fetchVans()
+}
 
 export const Vans = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+    const loaderData: any = useLoaderData();
 
-    const [data, setData] = useState<any>([])
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<any>(null);
+    // const [error, setError] = useState<any>(null);
 
     const typeFilter = searchParams.get('type')
-
-    const fetchData = async () => {
-        setLoading(true);
-
-        try {
-            const res = await fetch('/api/vans');
-            if (!res.ok) {
-                // eslint-disable-next-line no-throw-literal
-                throw {
-                    message: "Failed to fetch vans", 
-                    statusText: res.statusText,
-                    status: res.status
-                }
-            }
-            const jsonData = await res.json();
-            setData(jsonData.vans)
-        } catch (err) {
-            setError(err);
-        }
-
-        setLoading(false);
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, [])
 
     const handleFilterChange = (key: any, value: any) => {
         setSearchParams(prevParams => {
@@ -47,7 +24,7 @@ export const Vans = () => {
         })
     }
 
-    const filteredVans = typeFilter ? data.filter((van: any) => van.type === typeFilter) : data;
+    const filteredVans = typeFilter ? loaderData.filter((van: any) => van.type === typeFilter) : loaderData;
 
     const filterButtonStyle = {
         textDecoration: 'none', 
@@ -58,10 +35,8 @@ export const Vans = () => {
 
     return (
         <>
-            {error && <h1>There was an error: `${error}`</h1>}
-            {loading ? <h1>Loading...</h1> : (
-                <>
-                    <h1>Explore Our Van Options</h1>
+            {/* {error && <h1>There was an error: `${error}`</h1>} */}
+            <h1>Explore Our Van Options</h1>
             <div style={{display: 'flex', flexDirection: 'row'}}>
                 <button onClick={() => handleFilterChange('type', 'luxury')} style={{...filterButtonStyle}}>Luxury</button>
                 <button onClick={() => handleFilterChange('type', 'rugged')} style={{...filterButtonStyle}}>Rugged</button>
@@ -84,8 +59,6 @@ export const Vans = () => {
                     </Link>
                 ))}
             </ul>
-                </>
-            )}
         </>
     )
 }
