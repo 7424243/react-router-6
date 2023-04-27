@@ -1,23 +1,16 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { fetchHostVans } from '../../api';
+
+export const loader = () => {
+    return fetchHostVans();
+}
 
 export const HostVans = () => {
-    const [hostVansData, setHostVansData] = useState<any>(null);
-
-    const fetchHostVansData = async () => {
-        const res = await fetch('/api/host/vans')
-        const jsonRes = await res.json();
-        setHostVansData(jsonRes.vans);
-    }
-
-    useEffect(() => {
-        fetchHostVansData();
-    }, [])
+    const hostVansData: any = useLoaderData();
 
     return (
         <>
          <h1>Your Listed Vans</h1>
-         {!hostVansData && <h2>Loading...</h2>}
          {hostVansData && hostVansData.map((hostVan: any) => {
             return (
                 <Link to={hostVan.id} key={hostVan.id} style={{display: 'flex', flexDirection: 'row', backgroundColor: 'lightgray', width: 500, marginBottom: 20, textDecoration: 'none', color: 'black'}}>
