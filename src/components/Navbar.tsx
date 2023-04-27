@@ -33,6 +33,14 @@ export const Navbar = () => {
                     >
                         Vans
                     </NavLink>
+                    <NavLink
+                        to='/login' 
+                        style={({isActive}) => (
+                            navBarStyles(isActive)
+                        )}
+                    >
+                        Sign In
+                    </NavLink>
                 </div>
             </nav>
         </header>
