@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements, redirect } from 'react-router-dom';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import "./server";
 import { HostLayout } from './components/HostLayout';
 import { Layout } from './components/Layout';
@@ -19,7 +19,7 @@ import { NotFound } from './pages/NotFound';
 import { VanDetail, loader as vanDetailLoader } from './pages/Vans/VanDetail';
 import { Vans, loader as vansLoader } from './pages/Vans/Vans';
 import { Error } from './components/Error';
-import { Login } from './pages/Login';
+import { Login, loginLoader } from './pages/Login';
 import { requireAuth } from './utils';
 
 const root = ReactDOM.createRoot(
@@ -39,6 +39,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route 
         path='login' 
         element={<Login />} 
+        loader={loginLoader}
       />
       <Route 
         path='host' 

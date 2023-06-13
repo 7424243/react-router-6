@@ -1,8 +1,14 @@
 import { useState } from 'react'
+import { useLoaderData } from 'react-router-dom';
+
+export const loginLoader = ({request}: any) => {
+    return new URL(request.url).searchParams.get("message")
+}
 
 export const Login = () => {
     const [loginFormData, setLoginFormData] = useState({email: '', password: ''});
-
+    const message = useLoaderData();
+    
     const handleSubmit = (e: any) => {
         e.preventDefault();
         console.log('loginFormData: ', loginFormData);
@@ -19,6 +25,7 @@ export const Login = () => {
     return (
         <div>
             <h1>Sign in to your account</h1>
+            {message as string && <h2>{message as string}</h2>}
             <form onSubmit={handleSubmit}>
                 <input 
                     name='email'
