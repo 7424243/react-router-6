@@ -19,7 +19,7 @@ import { NotFound } from './pages/NotFound';
 import { VanDetail, loader as vanDetailLoader } from './pages/Vans/VanDetail';
 import { Vans, loader as vansLoader } from './pages/Vans/Vans';
 import { Error } from './components/Error';
-import { Login, loginLoader } from './pages/Login';
+import { Login, loginAction, loginLoader } from './pages/Login';
 import { requireAuth } from './utils';
 
 const root = ReactDOM.createRoot(
@@ -40,6 +40,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         path='login' 
         element={<Login />} 
         loader={loginLoader}
+        action={loginAction}
       />
       <Route 
         path='host' 
