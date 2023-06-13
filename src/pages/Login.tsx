@@ -4,8 +4,11 @@ export const loginLoader = ({request}: any) => {
     return new URL(request.url).searchParams.get("message")
 }
 
-export const loginAction = () => {
-    console.log('Action function');
+//replaces handleSubmit function
+export const loginAction = async ({request}: any) => {
+    const formData = await request.formData();
+    const email = formData.get('email'); //string matches the name of the input
+    const password = formData.get('password'); //string matches the name of the input
     return null;
 }
 
