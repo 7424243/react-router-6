@@ -2,8 +2,10 @@ import { NavLink, Outlet, useLoaderData } from 'react-router-dom'
 import { navBarStyles } from '../../components/styles';
 import { BackLink } from '../../components/BackLink';
 import { fetchHostVans } from '../../api';
+import { requireAuth } from '../../utils';
 
-export const loader = ({params}: any) => {
+export const loader = async ({params}: any) => {
+    await requireAuth();
     return fetchHostVans(params.id);
 }
 
